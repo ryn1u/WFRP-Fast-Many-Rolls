@@ -2,16 +2,15 @@ from typing import *
 from character import Character
 import random
 
-
 """
 I want to be able to choose create one (for normal) or two (for opposing) lists of characters, and choose what stats
 are these lists rolling for. Then random number generator automatically rolls dice for all of them and calculates
 PS. 
 
 Additional options:
-- Create, specific characters with names.
 - modifiers (for talents or status)
 - advantage
+- Create, specific characters with names.
 - Mark crits and auto win/loss
 - Create scenes (premade sets of lists that can be sotored, edited and saved, these could represent different fronts
 of battle)
@@ -31,30 +30,44 @@ class FastManyRolls:
         pairs = self.create_pairs()
         for pair in pairs:
             atk_roll, ps, def_roll = FastManyRolls.calculate_opposing_throw(
-                pair[0], self.attacking_ability, pair[1], self.defending_ability
+                pair[0], self.attacking_ability, pair[1], self.defending_ability, True
             )
             print(f"{str(pair[0])}:\t{atk_roll}\t\t{ps}\t\t{def_roll}:\t{str(pair[1])}")
 
     @staticmethod
     def get_tens(x):
-        return int(x/10)
+        return int(x / 10)
 
     @staticmethod
     def calculate_opposing_throw(
-            attacker: Character, attacking_ability: str, defender: Character, defending_ability: str
+            attacker: Character, attacking_ability: str, defender: Character, defending_ability: str,
+            block_opposing: bool = False
     ) -> Tuple[int, int, int]:
         attacking_roll = random.randint(1, 100)
-        defending_roll = random.randint(1, 100)
-
         attacking_skill = attacker[attacking_ability]
-        defending_skill = defender[defending_ability]
-
         attacker_ps = FastManyRolls.get_tens(attacking_skill - attacking_roll)
+        if block_opposing:
+            return attacking_roll, attacker_ps, 0
+
+        defending_roll = random.randint(1, 100)
+        defending_skill = defender[defending_ability]
         defender_ps = FastManyRolls.get_tens(defending_skill - defending_roll)
+
         return attacking_roll, attacker_ps - defender_ps, defending_roll
 
-    def calculate_test(self, character: Character, difficulty: int):
-        pass
+    @staticmethod
+    def calculate_test(character: Character, ability: str, difficulty: int) -> int:
+        roll = random.randint(1, 100)
+        skill = character[ability]
+        ps = FastManyRolls.get_tens(skill - roll)
+        return ps
+
+    def roll_attack(self, is_ranged: bool):
+        pairs = self.create_pairs()
+        for pair in pairs:
+            atk_roll, ps, def_roll = FastManyRolls.calculate_opposing_throw(
+                pair[0], self.attacking_ability, pair[1], self.defending_ability, True
+            )
 
     def create_pairs(self) -> List[Tuple[Character, Character]]:
         # give each attacker a random opponent. Remove that oponent from avaible list. If you run out of defenders refill
@@ -73,12 +86,12 @@ if __name__ == '__main__':
     fmr = FastManyRolls()
     fmr.attacking_ability = "Walka wręcz"
     fmr.defending_ability = "Umiejętności strzeleckie"
-    for c in range(10):
+    for c in range(100):
         char = Character()
         char.name = f"Attacker #{c}"
         fmr.attackers.append(char)
 
-    for c in range(10):
+    for c in range(100):
         char = Character()
         char.name = f"Defender #{c}"
         fmr.defenders.append(char)

@@ -59,7 +59,6 @@ class Character:
         else:
             raise KeyError(f"Not available skill: {item}")
 
-
     def save_character(self):
         with open(f"characters/{self.name}.py", 'wb') as file:
             pickle.dump(self, file)
