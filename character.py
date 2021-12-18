@@ -1,4 +1,6 @@
 import pickle
+import json
+from typing import *
 
 
 class Character:
@@ -6,46 +8,54 @@ class Character:
         self.name = ""
 
         self.attributes = {
-            "Walka wręcz": 50,
-            "Umiejętności strzeleckie": 50,
-            "Siła": 0,
-            "Wytrzymałość": 0,
-            "Inicjatywa": 0,
-            "Zwinność": 0,
-            "Zręcznośc": 0,
-            "Inteligencja": 0,
-            "Siła woli": 0,
-            "Ogłada": 0
+            'Weapon Skill': 0,
+            'Ballistic Skill': 0,
+            'Strength': 0,
+            'Toughness': 0,
+            'Initiative': 0,
+            'Agility': 0,
+            'Dexterity': 0,
+            'Intelligence': 0,
+            'Willpower': 0,
+            'Fellowship': 0
         }
 
         self.basic_skills = {
-            'Atletyka': 0,
-            'Broń Biała': 0,
-            'Charyzma': 0,
-            'Dowodzenie': 0,
-            'Hazard': 0,
-            'Intuicja': 0,
-            'Jeździectwo': 0,
-            'Mocna Głowa': 0,
-            'Nawigacja': 0,
-            'Odporność': 0,
-            'Opanowanie': 0,
-            'Oswajanie': 0,
-            'Percepcja': 0,
-            'Plotkowanie': 0,
-            'Powożenie': 0,
-            'Przekupstwo': 0,
-            'Skradanie': 0,
-            'Sztuka Przetrwania': 0,
-            'Targowanie': 0,
-            'Unik': 0,
-            'Wioślarstwo': 0,
-            'Wspinaczka': 0,
-            'Występy': 0,
-            'Zastraszanie': 0
+            'Art': 0,
+            'Athletics': 0,
+            'Bribery': 0,
+            'Charm': 0,
+            'Animal': 0,
+            'Climb': 0,
+            'Cool': 0,
+            'Consume': 0,
+            'Alcohol': 0,
+            'Dodge': 0,
+            'Drive': 0,
+            'Endurance': 0,
+            'Entertain': 0,
+            'Gamble': 0,
+            'Gossip': 0,
+            'Haggle': 0,
+            'Intimidate': 0,
+            'Intuition': 0,
+            'Leadership': 0,
+            'Melee': 0,
+            'Navigation': 0,
+            'Outdoor Survival': 0,
+            'Perception': 0,
+            'Ride': 0,
+            'Row': 0,
+            'Stealth': 0,
         }
 
         self.advanced_skills = {
+
+        }
+
+        self.advantage: int = 0
+        self.health: int = 0
+        self.modifiers: Dict[str, int] = {
 
         }
 
@@ -58,6 +68,30 @@ class Character:
             return all_skills[item]
         else:
             raise KeyError(f"Not available skill: {item}")
+
+    def __iter__(self):
+        yield "name", self.name
+        yield "attributes", self.attributes
+        yield "basic skills", self.basic_skills
+        yield "advanced skills", self.advanced_skills
+        yield "advantage", self.advantage
+        yield "health", self.health
+        yield "modifiers", self.modifiers
+
+    def to_json(self):
+        return json.dumps(dict(self), indent=4)
+
+    @staticmethod
+    def from_json(json_string):
+        char = Character()
+        char.name = json_string['name']
+        char.attributes = json_string['attributes']
+        char.basic_skills = json_string['basic_skills']
+        char.advanced_skills = json_string['advanced_skills']
+        char.advantage = json_string['advantage']
+        char.health = json_string['health']
+        char.modifiers = json_string['modifiers']
+        return char
 
     def save_character(self):
         with open(f"characters/{self.name}.py", 'wb') as file:

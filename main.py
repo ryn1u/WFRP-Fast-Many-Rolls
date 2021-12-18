@@ -8,9 +8,9 @@ are these lists rolling for. Then random number generator automatically rolls di
 PS. 
 
 Additional options:
+- Create, save, modify, copy specific characters with names.
 - modifiers (for talents or status)
-- advantage
-- Create, specific characters with names.
+- advantage. Give advantage to group
 - Mark crits and auto win/loss
 - Create scenes (premade sets of lists that can be sotored, edited and saved, these could represent different fronts
 of battle)
@@ -25,14 +25,6 @@ class FastManyRolls:
         self.defenders: List[Character] = []
         self.attacking_ability: str = ""
         self.defending_ability: str = ""
-
-    def roll_dice(self):
-        pairs = self.create_pairs()
-        for pair in pairs:
-            atk_roll, ps, def_roll = FastManyRolls.calculate_opposing_throw(
-                pair[0], self.attacking_ability, pair[1], self.defending_ability, True
-            )
-            print(f"{str(pair[0])}:\t{atk_roll}\t\t{ps}\t\t{def_roll}:\t{str(pair[1])}")
 
     @staticmethod
     def get_tens(x):
@@ -56,18 +48,30 @@ class FastManyRolls:
         return attacking_roll, attacker_ps - defender_ps, defending_roll
 
     @staticmethod
-    def calculate_test(character: Character, ability: str, difficulty: int) -> int:
+    def calculate_test(character: Character, ability: str, difficulty: int) -> Tuple[int, int, int]:
         roll = random.randint(1, 100)
         skill = character[ability]
-        ps = FastManyRolls.get_tens(skill - roll)
-        return ps
+        result = skill + difficulty - roll
+        ps = FastManyRolls.get_tens(result)
+        return roll, ps, result
 
-    def roll_attack(self, is_ranged: bool):
+    def resolve_attack(self, is_ranged: bool):
         pairs = self.create_pairs()
         for pair in pairs:
             atk_roll, ps, def_roll = FastManyRolls.calculate_opposing_throw(
-                pair[0], self.attacking_ability, pair[1], self.defending_ability, True
+                pair[0], self.attacking_ability, pair[1], self.defending_ability, is_ranged
             )
+            #TODO: add advantage, deal dmg, flag crits and killed
+            print(f"{str(pair[0])}:\t{atk_roll}\t\t{ps}\t\t{def_roll}:\t{str(pair[1])}")
+
+    def resolve_group_test(self, difficulty):
+        results = []
+        for attacker in self.attackers:
+            roll, ps, result = FastManyRolls.calculate_test(attacker, self.attacking_ability, difficulty)
+            test_result = "PASS" if result >= 0 else "FAIL"
+            print(f"{str(attacker)}:\t{roll}\t\t{ps}\t\t{test_result}")
+            results.append(ps)
+        print(f"Wynik wspólny: {sum(results)}")
 
     def create_pairs(self) -> List[Tuple[Character, Character]]:
         # give each attacker a random opponent. Remove that oponent from avaible list. If you run out of defenders refill
@@ -84,17 +88,17 @@ class FastManyRolls:
 
 if __name__ == '__main__':
     fmr = FastManyRolls()
-    fmr.attacking_ability = "Walka wręcz"
-    fmr.defending_ability = "Umiejętności strzeleckie"
-    for c in range(100):
+    fmr.attacking_ability = "Weapon Skill"
+    fmr.defending_ability = "Ballistic Skill"
+    for c in range(30):
         char = Character()
         char.name = f"Attacker #{c}"
         fmr.attackers.append(char)
 
-    for c in range(100):
+    for c in range(10):
         char = Character()
         char.name = f"Defender #{c}"
         fmr.defenders.append(char)
 
-    fmr.roll_dice()
+    fmr.resolve_group_test(50)
     pass
