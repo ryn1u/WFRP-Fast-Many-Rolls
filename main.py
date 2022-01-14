@@ -1,6 +1,11 @@
+import random
 from typing import *
 from character import Character
-import random
+from table_entry import Ui_Form
+from test_table import Ui_MainWindow
+from PyQt5 import QtWidgets as qtw
+from PyQt5 import QtCore as qtc
+from fastmanyrollsui import FastManyRollsUI
 
 """
 I want to be able to choose create one (for normal) or two (for opposing) lists of characters, and choose what stats
@@ -87,18 +92,9 @@ class FastManyRolls:
 
 
 if __name__ == '__main__':
-    fmr = FastManyRolls()
-    fmr.attacking_ability = "Weapon Skill"
-    fmr.defending_ability = "Ballistic Skill"
-    for c in range(30):
-        char = Character()
-        char.name = f"Attacker #{c}"
-        fmr.attackers.append(char)
+    app = qtw.QApplication([])
 
-    for c in range(10):
-        char = Character()
-        char.name = f"Defender #{c}"
-        fmr.defenders.append(char)
+    widget = FastManyRollsUI()
+    widget.show()
 
-    fmr.resolve_group_test(50)
-    pass
+    app.exec()

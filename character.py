@@ -5,53 +5,18 @@ from typing import *
 
 class Character:
     def __init__(self) -> None:
+        from utils import BASIC_SKILLS, ATTRIBUTES
+
         self.name = ""
 
-        self.attributes = {
-            'Weapon Skill': 0,
-            'Ballistic Skill': 0,
-            'Strength': 0,
-            'Toughness': 0,
-            'Initiative': 0,
-            'Agility': 0,
-            'Dexterity': 0,
-            'Intelligence': 0,
-            'Willpower': 0,
-            'Fellowship': 0
-        }
+        self.attributes = {attribute: 0 for attribute in ATTRIBUTES}
 
-        self.basic_skills = {
-            'Art': 0,
-            'Athletics': 0,
-            'Bribery': 0,
-            'Charm': 0,
-            'Animal': 0,
-            'Climb': 0,
-            'Cool': 0,
-            'Consume': 0,
-            'Alcohol': 0,
-            'Dodge': 0,
-            'Drive': 0,
-            'Endurance': 0,
-            'Entertain': 0,
-            'Gamble': 0,
-            'Gossip': 0,
-            'Haggle': 0,
-            'Intimidate': 0,
-            'Intuition': 0,
-            'Leadership': 0,
-            'Melee': 0,
-            'Navigation': 0,
-            'Outdoor Survival': 0,
-            'Perception': 0,
-            'Ride': 0,
-            'Row': 0,
-            'Stealth': 0,
-        }
+        self.basic_skills = {basic: 0 for basic in BASIC_SKILLS}
 
         self.advanced_skills = {
 
         }
+        self._all_skills = {**self.attributes, **self.basic_skills, **self.advanced_skills}
 
         self.advantage: int = 0
         self.health: int = 0
@@ -63,9 +28,8 @@ class Character:
         return self.name
 
     def __getitem__(self, item):
-        all_skills = {**self.attributes, **self.basic_skills, **self.advanced_skills}
-        if item in all_skills:
-            return all_skills[item]
+        if item in self._all_skills:
+            return self._all_skills[item]
         else:
             raise KeyError(f"Not available skill: {item}")
 
