@@ -19,7 +19,7 @@ class Character:
         self._all_skills = {**self.attributes, **self.basic_skills, **self.advanced_skills}
 
         self.advantage: int = 0
-        self.health: int = 0
+        self.wounds: int = 0
         self.modifiers: Dict[str, int] = {
 
         }
@@ -39,7 +39,7 @@ class Character:
         yield "basic skills", self.basic_skills
         yield "advanced skills", self.advanced_skills
         yield "advantage", self.advantage
-        yield "health", self.health
+        yield "health", self.wounds
         yield "modifiers", self.modifiers
 
     def to_json(self):
@@ -53,17 +53,17 @@ class Character:
         char.basic_skills = json_string['basic_skills']
         char.advanced_skills = json_string['advanced_skills']
         char.advantage = json_string['advantage']
-        char.health = json_string['health']
+        char.wounds = json_string['health']
         char.modifiers = json_string['modifiers']
         return char
 
     def save_character(self):
-        with open(f"characters/{self.name}.py", 'wb') as file:
+        with open(f"characters/{self.name}.chr", 'wb') as file:
             pickle.dump(self, file)
 
     @staticmethod
     def load_character(name):
-        with open(f"characters/{name}.py", 'rb') as file:
+        with open(f"characters/{name}.chr", 'rb') as file:
             return pickle.load(file)
 
 
