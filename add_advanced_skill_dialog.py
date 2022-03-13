@@ -40,9 +40,6 @@ class Ui_MainWindow(object):
         self.add_button = QtWidgets.QPushButton(self.widget)
         self.add_button.setObjectName("add_button")
         self.horizontalLayout.addWidget(self.add_button)
-        self.cancel_button = QtWidgets.QPushButton(self.widget)
-        self.cancel_button.setObjectName("cancel_button")
-        self.horizontalLayout.addWidget(self.cancel_button)
         self.verticalLayout.addWidget(self.widget)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -55,4 +52,3 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Advanced Skill"))
         self.label_2.setText(_translate("MainWindow", "Specialization"))
         self.add_button.setText(_translate("MainWindow", "Add"))
-        self.cancel_button.setText(_translate("MainWindow", "Cancel"))

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>989</width>
-    <height>807</height>
+    <width>724</width>
+    <height>631</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -433,7 +433,7 @@
                 <widget class="QLabel" name="basic_skill_label_1">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -442,7 +442,13 @@
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="basic_skill_value_1"/>
+                <widget class="QSpinBox" name="basic_skill_value_1">
+                 <property name="font">
+                  <font>
+                   <pointsize>8</pointsize>
+                  </font>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -457,7 +463,7 @@
                 <widget class="QLabel" name="basic_skill_label_2">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -481,7 +487,7 @@
                 <widget class="QLabel" name="basic_skill_label_3">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -505,7 +511,7 @@
                 <widget class="QLabel" name="basic_skill_label_4">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -529,7 +535,7 @@
                 <widget class="QLabel" name="basic_skill_label_5">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -579,7 +585,7 @@
                 <widget class="QLabel" name="basic_skill_label_6">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -588,7 +594,13 @@
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="basic_skill_value_6"/>
+                <widget class="QSpinBox" name="basic_skill_value_6">
+                 <property name="font">
+                  <font>
+                   <pointsize>8</pointsize>
+                  </font>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -603,7 +615,7 @@
                 <widget class="QLabel" name="basic_skill_label_7">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -627,7 +639,7 @@
                 <widget class="QLabel" name="basic_skill_label_8">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -651,7 +663,7 @@
                 <widget class="QLabel" name="basic_skill_label_9">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -675,7 +687,7 @@
                 <widget class="QLabel" name="basic_skill_label_10">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -725,7 +737,7 @@
                 <widget class="QLabel" name="basic_skill_label_11">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -734,7 +746,13 @@
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="basic_skill_value_11"/>
+                <widget class="QSpinBox" name="basic_skill_value_11">
+                 <property name="font">
+                  <font>
+                   <pointsize>8</pointsize>
+                  </font>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -749,7 +767,7 @@
                 <widget class="QLabel" name="basic_skill_label_12">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -773,7 +791,7 @@
                 <widget class="QLabel" name="basic_skill_label_13">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -797,7 +815,7 @@
                 <widget class="QLabel" name="basic_skill_label_14">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -821,7 +839,7 @@
                 <widget class="QLabel" name="basic_skill_label_15">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -871,7 +889,7 @@
                 <widget class="QLabel" name="basic_skill_label_16">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -880,7 +898,13 @@
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="basic_skill_value_16"/>
+                <widget class="QSpinBox" name="basic_skill_value_16">
+                 <property name="font">
+                  <font>
+                   <pointsize>8</pointsize>
+                  </font>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -895,7 +919,7 @@
                 <widget class="QLabel" name="basic_skill_label_17">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -919,7 +943,7 @@
                 <widget class="QLabel" name="basic_skill_label_18">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -943,7 +967,7 @@
                 <widget class="QLabel" name="basic_skill_label_19">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -967,7 +991,7 @@
                 <widget class="QLabel" name="basic_skill_label_20">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -1017,7 +1041,7 @@
                 <widget class="QLabel" name="basic_skill_label_21">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -1026,7 +1050,13 @@
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="basic_skill_value_21"/>
+                <widget class="QSpinBox" name="basic_skill_value_21">
+                 <property name="font">
+                  <font>
+                   <pointsize>8</pointsize>
+                  </font>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -1041,7 +1071,7 @@
                 <widget class="QLabel" name="basic_skill_label_22">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -1065,7 +1095,7 @@
                 <widget class="QLabel" name="basic_skill_label_23">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -1089,7 +1119,7 @@
                 <widget class="QLabel" name="basic_skill_label_24">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -1113,7 +1143,7 @@
                 <widget class="QLabel" name="basic_skill_label_25">
                  <property name="font">
                   <font>
-                   <pointsize>6</pointsize>
+                   <pointsize>8</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -1138,6 +1168,12 @@
    </item>
    <item>
     <widget class="QGroupBox" name="advanced_skills_box">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>175</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -1156,6 +1192,9 @@
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -1164,8 +1203,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>954</width>
-           <height>241</height>
+           <width>695</width>
+           <height>142</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_30">
