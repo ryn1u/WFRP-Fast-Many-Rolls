@@ -3,11 +3,15 @@ from add_advanced_skill_dialog_ui import AddAdvancedSkillUI
 from advanced_skill_entry import Ui_advanced_skill_entry as AdvancedSkillEntry
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
+from PyQt5 import QtGui
 
 from utils import BASIC_SKILLS, ATTRIBUTES
 from typing import Union
 
+import json
 
+
+# todo add specialization handling
 class CharacterCreatorUI(qtw.QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -30,8 +34,11 @@ class CharacterCreatorUI(qtw.QWidget):
             for num, misc in enumerate(["Advantage", "Wounds"])
         }
 
+        self.advanced_skills = {}
+
         self.add_advanced_skill_dialog: Union[None, AddAdvancedSkillUI] = None
         self.ui.add_advanced_skill_button.clicked.connect(self.show_advanced_skill_dialog)
+        self.ui.pushButton.clicked.connect(self.save_character)
 
     def _initialize_field(self, name, field_type, num, value=0):
         text = self.ui.__getattribute__(f"{field_type}_label_{num+1}")
@@ -56,11 +63,17 @@ class CharacterCreatorUI(qtw.QWidget):
 
         self.add_advanced_skill_entry(skill, specialization)
 
-    def add_advanced_skill_entry(self, skill, specialization):
-        print(skill)
-        print(specialization)
+    def add_advanced_skill_entry(self, skill, specialization, value=0):
         entry: AdvancedSkillEntryUI = AdvancedSkillEntryUI()
         entry.set_text(skill, specialization)
+        entry.ui.advanced_skill_value.setValue(value)
+        if skill in self.advanced_skills:
+            if specialization in self.advanced_skills[skill]:
+                return
+            else:
+                self.advanced_skills[skill][specialization] = entry.ui.advanced_skill_value
+        else:
+            self.advanced_skills[skill] = {specialization: entry.ui.advanced_skill_value}
 
         layout = self.ui.scrollAreaWidgetContents.layout()
         button_item = layout.itemAt(len(layout) - 2)
@@ -71,6 +84,54 @@ class CharacterCreatorUI(qtw.QWidget):
         layout.addItem(button_item)
         layout.addItem(spacer_item)
 
+    def keyReleaseEvent(self, a0: QtGui.QKeyEvent) -> None:
+        if a0.matches(QtGui.QKeySequence.Delete):
+            self.delete_selected_skills()
+
+    def delete_selected_skills(self):
+        layout = self.ui.scrollAreaWidgetContents.layout()
+        advanced_skills = [layout.itemAt(i).widget() for i in range(len(layout))
+                           if type(layout.itemAt(i).widget()) == AdvancedSkillEntryUI]
+        for skill in advanced_skills:
+            if skill.selected:
+                layout.removeWidget(skill)
+                skill_name = skill.ui.advanced_skill_label.text()
+                specialization = skill.ui.specialization_label.text()
+                del self.advanced_skills[skill_name][specialization]
+
+    def save_character(self):
+        attributes = {attribute: spin_box.value() for attribute, spin_box in self.attributes.items()}
+        basic_skills = {skill: spin_box.value() for skill, spin_box in self.basic_skills.items()}
+        advanced_skills = {}
+        for advanced_skill in self.advanced_skills:
+            advanced_skills[advanced_skill] = {spec: spin_box.value() for spec, spin_box
+                                               in self.advanced_skills[advanced_skill].items()}
+        misc = {skill: spin_box.value() for skill, spin_box in self.misc.items()}
+
+        name = self.ui.lineEdit_2.text()
+        character_data = {"name": name, "attributes": attributes, "basic_skills": basic_skills,
+                          "advanced_skills": advanced_skills, "miscellaneous": misc}
+        with open(f"characters/{name}_char.json", "w") as file:
+            json.dump(character_data, file, indent=4)
+
+    def load_character(self, data):
+        self.ui.lineEdit_2.setText(data["name"])
+        attributes = data["attributes"]
+        basic_skills = data["basic_skills"]
+        misc = data["miscellaneous"]
+        for attribute, spin_box in self.attributes.items():
+            spin_box.setValue(attributes[attribute])
+        for basic, spin_box in self.basic_skills.items():
+            spin_box.setValue(basic_skills[basic])
+        for m, spin_box in self.misc.items():
+            spin_box.setValue(misc[m])
+
+        advanced_skills = data["advanced_skills"]
+        for advanced_skill, skill_dict in advanced_skills.items():
+            for specialization, value in skill_dict.items():
+                self.add_advanced_skill_entry(advanced_skill, specialization, value)
+
+
 
 class AdvancedSkillEntryUI(qtw.QWidget):
     def __init__(self, *args, **kwargs):
@@ -78,7 +139,19 @@ class AdvancedSkillEntryUI(qtw.QWidget):
 
         self.ui = AdvancedSkillEntry()
         self.ui.setupUi(self)
+        self.selected = False
 
     def set_text(self, skill, specialization):
         self.ui.advanced_skill_label.setText(skill)
         self.ui.specialization_label.setText(specialization)
+
+    def toggle_selection(self):
+        self.selected = not self.selected
+        if self.selected:
+            self.ui.frame.setFrameStyle(qtw.QFrame.Panel)
+        else:
+            self.ui.frame.setFrameStyle(qtw.QFrame.StyledPanel)
+
+    def mouseReleaseEvent(self, a0: QtGui.QMouseEvent) -> None:
+        if a0.button() == 2:
+            self.toggle_selection()

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
+    <width>1098</width>
     <height>730</height>
    </rect>
   </property>
@@ -152,13 +152,13 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>998</width>
-              <height>554</height>
+              <width>1076</width>
+              <height>561</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
-              <widget class="QFrame" name="frame">
+              <widget class="QFrame" name="add_btn_frame">
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
@@ -239,9 +239,52 @@
        </spacer>
       </item>
       <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Difficulty</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="difficulty_spin_box">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>-100</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="pushButton">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>40</height>
+         </size>
+        </property>
         <property name="text">
          <string>Roll Dice</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="result_label">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
@@ -254,8 +297,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1024</width>
-     <height>26</height>
+     <width>1098</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuList">

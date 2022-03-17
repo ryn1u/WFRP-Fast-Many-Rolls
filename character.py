@@ -16,7 +16,6 @@ class Character:
         self.advanced_skills = {
 
         }
-        self._all_skills = {**self.attributes, **self.basic_skills, **self.advanced_skills}
 
         self.advantage: int = 0
         self.wounds: int = 0
@@ -28,42 +27,39 @@ class Character:
         return self.name
 
     def __getitem__(self, item):
-        if item in self._all_skills:
-            return self._all_skills[item]
+        all_skills = {**self.attributes, **self.basic_skills, **self.advanced_skills}
+        if item in all_skills:
+            return all_skills[item]
         else:
             raise KeyError(f"Not available skill: {item}")
 
-    def __iter__(self):
-        yield "name", self.name
-        yield "attributes", self.attributes
-        yield "basic skills", self.basic_skills
-        yield "advanced skills", self.advanced_skills
-        yield "advantage", self.advantage
-        yield "health", self.wounds
-        yield "modifiers", self.modifiers
-
-    def to_json(self):
-        return json.dumps(dict(self), indent=4)
-
-    @staticmethod
-    def from_json(json_string):
-        char = Character()
-        char.name = json_string['name']
-        char.attributes = json_string['attributes']
-        char.basic_skills = json_string['basic_skills']
-        char.advanced_skills = json_string['advanced_skills']
-        char.advantage = json_string['advantage']
-        char.wounds = json_string['health']
-        char.modifiers = json_string['modifiers']
-        return char
-
-    def save_character(self):
-        with open(f"characters/{self.name}.chr", 'wb') as file:
-            pickle.dump(self, file)
+    def __setitem__(self, key, value):
+        if key in self.attributes:
+            self.attributes[key] = value
+        elif key in self.basic_skills:
+            self.basic_skills[key] = value
+        elif key in self.advanced_skills:
+            self.advanced_skills[key] = value
+        elif key == 'Advantage':
+            self.advantage = value
+        elif key == 'Wounds':
+            self.wounds = value
 
     @staticmethod
-    def load_character(name):
-        with open(f"characters/{name}.chr", 'rb') as file:
-            return pickle.load(file)
+    def from_dict(data):
+        character = Character()
+        character.name = data["name"]
+        for attr in data['attributes']:
+            character[attr] = data['attributes'][attr]
+
+        for basic in data['basic_skills']:
+            character[basic] = data['basic_skills'][basic]
+
+        for adv in data['advanced_skills']:
+            character[adv] = data['advanced_skills'][adv]
+
+        character.advantage = data['miscellaneous']['Advantage']
+        character.wounds = data['miscellaneous']['Wounds']
+        return character
 
 
