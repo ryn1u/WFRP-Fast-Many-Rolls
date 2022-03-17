@@ -115,7 +115,11 @@ class FastManyRollsUI(qtw.QMainWindow):
         total = 0
         for idx, result in enumerate(results):
             roll, ps, _ = result
-            total += ps
             self.character_entries[idx].set_roll(roll)
             self.character_entries[idx].set_ps(ps)
+            if self.ui.only_positive_check.isChecked():
+                if ps > 0:
+                    total += ps
+            else:
+                total += ps
         self.ui.result_label.setText(str(total))

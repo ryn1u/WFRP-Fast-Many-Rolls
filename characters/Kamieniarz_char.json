@@ -1,0 +1,51 @@
+{
+    "name": "Kamieniarz",
+    "attributes": {
+        "Weapon Skill": 30,
+        "Ballistic Skill": 20,
+        "Strength": 60,
+        "Toughness": 50,
+        "Initiative": 30,
+        "Agility": 30,
+        "Dexterity": 30,
+        "Intelligence": 30,
+        "Willpower": 35,
+        "Fellowship": 30
+    },
+    "basic_skills": {
+        "Art": 30,
+        "Athletics": 45,
+        "Bribery": 30,
+        "Charm": 30,
+        "Charm Animal": 35,
+        "Climb": 65,
+        "Cool": 45,
+        "Consume Alcohol": 65,
+        "Dodge": 35,
+        "Drive": 30,
+        "Endurance": 55,
+        "Entertain": 30,
+        "Gamble": 30,
+        "Gossip": 35,
+        "Haggle": 30,
+        "Intimidate": 65,
+        "Intuition": 30,
+        "Leadership": 30,
+        "Melee": 40,
+        "Navigation": 30,
+        "Outdoor Survival": 35,
+        "Perception": 30,
+        "Ride": 35,
+        "Row": 65,
+        "Stealth": 30
+    },
+    "advanced_skills": {
+        "Trade": {
+            "Masonry": 85
+        }
+    },
+    "miscellaneous": {
+        "Advantage": 0,
+        "Wounds": 0
+    }
+}

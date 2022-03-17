@@ -51,8 +51,8 @@ class FastManyRolls:
     def calculate_test(character: Character, ability: str, difficulty: int) -> Tuple[int, int, int]:
         roll = random.randint(1, 100)
         skill = character[ability]
-        result = skill - difficulty - roll
-        ps = FastManyRolls.get_tens(result)
+        result = skill - difficulty
+        ps = FastManyRolls.get_tens(result) - FastManyRolls.get_tens(roll)
         return roll, ps, result
 
     def resolve_attack(self, is_ranged: bool):

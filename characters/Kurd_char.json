@@ -1,0 +1,55 @@
+{
+    "name": "Kurd",
+    "attributes": {
+        "Weapon Skill": 30,
+        "Ballistic Skill": 45,
+        "Strength": 30,
+        "Toughness": 40,
+        "Initiative": 25,
+        "Agility": 35,
+        "Dexterity": 30,
+        "Intelligence": 25,
+        "Willpower": 30,
+        "Fellowship": 25
+    },
+    "basic_skills": {
+        "Art": 30,
+        "Athletics": 40,
+        "Bribery": 25,
+        "Charm": 25,
+        "Charm Animal": 35,
+        "Climb": 35,
+        "Cool": 30,
+        "Consume Alcohol": 45,
+        "Dodge": 35,
+        "Drive": 35,
+        "Endurance": 45,
+        "Entertain": 25,
+        "Gamble": 40,
+        "Gossip": 25,
+        "Haggle": 25,
+        "Intimidate": 35,
+        "Intuition": 25,
+        "Leadership": 25,
+        "Melee": 35,
+        "Navigation": 25,
+        "Outdoor Survival": 30,
+        "Perception": 30,
+        "Ride": 35,
+        "Row": 30,
+        "Stealth": 55
+    },
+    "advanced_skills": {
+        "Ranged": {
+            "Bows": 85,
+            "Slings": 55
+        },
+        "Track": {
+            "": 25
+        }
+    },
+    "miscellaneous": {
+        "Advantage": 0,
+        "Wounds": 0
+    }
+}

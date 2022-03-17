@@ -1,0 +1,47 @@
+{
+    "name": "Wiesniak",
+    "attributes": {
+        "Weapon Skill": 30,
+        "Ballistic Skill": 40,
+        "Strength": 40,
+        "Toughness": 45,
+        "Initiative": 30,
+        "Agility": 40,
+        "Dexterity": 40,
+        "Intelligence": 30,
+        "Willpower": 35,
+        "Fellowship": 30
+    },
+    "basic_skills": {
+        "Art": 40,
+        "Athletics": 45,
+        "Bribery": 30,
+        "Charm": 30,
+        "Charm Animal": 35,
+        "Climb": 40,
+        "Cool": 40,
+        "Consume Alcohol": 60,
+        "Dodge": 40,
+        "Drive": 40,
+        "Endurance": 55,
+        "Entertain": 40,
+        "Gamble": 30,
+        "Gossip": 40,
+        "Haggle": 30,
+        "Intimidate": 40,
+        "Intuition": 30,
+        "Leadership": 30,
+        "Melee": 40,
+        "Navigation": 30,
+        "Outdoor Survival": 35,
+        "Perception": 30,
+        "Ride": 40,
+        "Row": 40,
+        "Stealth": 40
+    },
+    "advanced_skills": {},
+    "miscellaneous": {
+        "Advantage": 0,
+        "Wounds": 0
+    }
+}

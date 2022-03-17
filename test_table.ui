@@ -239,6 +239,13 @@
        </spacer>
       </item>
       <item>
+       <widget class="QCheckBox" name="only_positive_check">
+        <property name="text">
+         <string>Only Positive</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Difficulty</string>

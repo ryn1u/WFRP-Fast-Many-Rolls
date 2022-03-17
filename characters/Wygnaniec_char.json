@@ -1,0 +1,47 @@
+{
+    "name": "Wygnaniec",
+    "attributes": {
+        "Weapon Skill": 40,
+        "Ballistic Skill": 40,
+        "Strength": 40,
+        "Toughness": 40,
+        "Initiative": 30,
+        "Agility": 40,
+        "Dexterity": 40,
+        "Intelligence": 40,
+        "Willpower": 35,
+        "Fellowship": 50
+    },
+    "basic_skills": {
+        "Art": 40,
+        "Athletics": 45,
+        "Bribery": 55,
+        "Charm": 50,
+        "Charm Animal": 35,
+        "Climb": 40,
+        "Cool": 40,
+        "Consume Alcohol": 50,
+        "Dodge": 40,
+        "Drive": 40,
+        "Endurance": 50,
+        "Entertain": 50,
+        "Gamble": 45,
+        "Gossip": 60,
+        "Haggle": 50,
+        "Intimidate": 45,
+        "Intuition": 30,
+        "Leadership": 55,
+        "Melee": 43,
+        "Navigation": 30,
+        "Outdoor Survival": 45,
+        "Perception": 30,
+        "Ride": 40,
+        "Row": 40,
+        "Stealth": 40
+    },
+    "advanced_skills": {},
+    "miscellaneous": {
+        "Advantage": 0,
+        "Wounds": 0
+    }
+}
