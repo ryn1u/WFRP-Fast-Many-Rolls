@@ -1,8 +1,7 @@
-from character_creator import Ui_Form as CharacterCreator
+from qt_ui.character_creator import Ui_Form as CharacterCreator
 from add_advanced_skill_dialog_ui import AddAdvancedSkillUI
-from advanced_skill_entry import Ui_advanced_skill_entry as AdvancedSkillEntry
+from qt_ui.advanced_skill_entry import Ui_advanced_skill_entry as AdvancedSkillEntry
 from PyQt5 import QtWidgets as qtw
-from PyQt5 import QtCore as qtc
 from PyQt5 import QtGui
 
 from utils import BASIC_SKILLS, ATTRIBUTES
@@ -130,7 +129,6 @@ class CharacterCreatorUI(qtw.QWidget):
         for advanced_skill, skill_dict in advanced_skills.items():
             for specialization, value in skill_dict.items():
                 self.add_advanced_skill_entry(advanced_skill, specialization, value)
-
 
 
 class AdvancedSkillEntryUI(qtw.QWidget):

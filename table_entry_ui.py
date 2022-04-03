@@ -1,7 +1,7 @@
-from table_entry import Ui_table_entry_frame as TableEntry
+from qt_ui.table_entry import Ui_table_entry_frame as TableEntry
 from PyQt5 import QtWidgets as qtw
-from PyQt5 import QtCore as qtc
 from PyQt5 import QtGui
+from character import Character
 
 
 class TableEntryUI(qtw.QWidget):
@@ -11,7 +11,7 @@ class TableEntryUI(qtw.QWidget):
         self.ui = TableEntry()
         self.ui.setupUi(self)
 
-        self.character = None
+        self.character: Character = None
         self.selected = False
 
     def get_character_name(self):
@@ -48,3 +48,6 @@ class TableEntryUI(qtw.QWidget):
     def mouseReleaseEvent(self, a0: QtGui.QMouseEvent) -> None:
         if a0.button() == 2:
             self.toggle_selection()
+
+    def remove(self):
+        self.setParent(None)

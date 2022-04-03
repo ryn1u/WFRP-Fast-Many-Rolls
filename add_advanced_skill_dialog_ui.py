@@ -1,6 +1,5 @@
-from add_advanced_skill_dialog import Ui_MainWindow as AddAdvancedSkill
+from qt_ui.add_advanced_skill_dialog import Ui_MainWindow as AddAdvancedSkill
 from PyQt5 import QtWidgets as qtw
-from PyQt5 import QtCore as qtc
 from utils import ADVANCED_SKILLS
 
 
