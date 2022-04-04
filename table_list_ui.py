@@ -26,6 +26,12 @@ class TableListUI:
     def set_difficulty(self):
         self.difficulty = self.difficulty_spinbox.value()
 
+    def delete_all(self):
+        for i in range(len(self.character_entries)):
+            character = self.character_entries[0]
+            self.character_entries.remove(character)
+            character.remove()
+
     def delete_selected(self):
         for i in range(len(self.character_entries) - 1, -1, -1):
             character = self.character_entries[i]

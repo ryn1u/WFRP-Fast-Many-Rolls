@@ -7,7 +7,7 @@ from character_creator_ui import CharacterCreatorUI
 
 
 class MainWindowMenu:
-    def __init__(self, main_window, ):
+    def __init__(self, main_window):
         self.main_window = main_window
         self.main_window_qt = main_window.ui
 
@@ -16,6 +16,8 @@ class MainWindowMenu:
 
         self.save_list_btn = self.main_window_qt.actionListSave
         self.load_list_btn = self.main_window_qt.actionListLoad
+
+        self.switch_mode_btn = self.main_window_qt.actionSwitchTestMode
 
         self.character_creator: CharacterCreatorUI = None
 
@@ -26,6 +28,7 @@ class MainWindowMenu:
         self.edit_character_btn.triggered.connect(self.edit_character)
         self.save_list_btn.triggered.connect(self.save_current_list)
         self.load_list_btn.triggered.connect(self.load_list)
+        self.switch_mode_btn.triggered.connect(self.main_window.switch_mode)
 
     def open_new_character_creator(self):
         self.character_creator = CharacterCreatorUI()
@@ -51,9 +54,17 @@ class MainWindowMenu:
         )
         return file_name
 
-    def save_current_list(self):  # todo rewrite for opposing throws
-        character_entries = self.main_window.roll_lists[0].character_entries
-        character_list = [c.character.name for c in character_entries]
+    def save_current_list(self):
+        if self.main_window.is_opposing:
+            character_entries_left = self.main_window.roll_lists[0].character_entries
+            character_entries_right = self.main_window.roll_lists[1].character_entries
+            character_list = {
+                "left": [c.character.name for c in character_entries_left],
+                "right": [c.character.name for c in character_entries_right],
+            }
+        else:
+            character_entries = self.main_window.roll_lists[0].character_entries
+            character_list = [c.character.name for c in character_entries]
 
         options = qtw.QFileDialog.Options()
         options |= qtw.QFileDialog.DontUseNativeDialog
@@ -84,11 +95,34 @@ class MainWindowMenu:
             return
 
         file = open(filename, 'rb')
-        characters_list = pickle.load(file)
+        roll_list = pickle.load(file)
         file.close()
+        # todo add dialog prompt to save list
+        if isinstance(roll_list, list):
+            if self.main_window.is_opposing:
+                self.main_window.switch_mode()
+            self.load_group_test_list(roll_list)
+        elif isinstance(roll_list, dict):
+            if not self.main_window.is_opposing:
+                self.main_window.switch_mode()
+            self.load_opposing_test_list(roll_list)
 
-        for character_name in characters_list:
+    def load_group_test_list(self, roll_list):
+        for character_name in roll_list:
             character_file_path = "characters/" + character_name + "_char.json"
             with open(character_file_path, 'r') as file:
                 char_dict = json.load(file)
                 self.main_window.roll_lists[0].add_character_entry(char_dict)
+
+    def load_opposing_test_list(self, roll_list):
+        if isinstance(roll_list, list):
+            self.load_group_test_list(roll_list)
+            return
+        for idx, (side, character_list) in enumerate(roll_list.items()):
+            for character_name in character_list:
+                character_file_path = "characters/" + character_name + "_char.json"
+                with open(character_file_path, 'r') as file:
+                    char_dict = json.load(file)
+                    self.main_window.roll_lists[idx].add_character_entry(char_dict)
+
+

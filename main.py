@@ -12,5 +12,4 @@ if __name__ == '__main__':
     app.exec()
 
 # todo:
-#   opposing throw lists
-#   add sides flip in opposing throw
+#   add attacking test difficulty

@@ -153,7 +153,7 @@
               <x>0</x>
               <y>0</y>
               <width>1076</width>
-              <height>561</height>
+              <height>552</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -305,14 +305,13 @@
      <x>0</x>
      <y>0</y>
      <width>1098</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuList">
     <property name="title">
      <string>List</string>
     </property>
-    <addaction name="actionListNew"/>
     <addaction name="actionListSave"/>
     <addaction name="actionListLoad"/>
    </widget>
@@ -323,8 +322,15 @@
     <addaction name="actionCaracterNew"/>
     <addaction name="actionCharacterEdit"/>
    </widget>
+   <widget class="QMenu" name="menuTest">
+    <property name="title">
+     <string>Test</string>
+    </property>
+    <addaction name="actionSwitchTestMode"/>
+   </widget>
    <addaction name="menuList"/>
    <addaction name="menuCharacter"/>
+   <addaction name="menuTest"/>
   </widget>
   <action name="actionListNew">
    <property name="text">
@@ -349,6 +355,11 @@
   <action name="actionCharacterEdit">
    <property name="text">
     <string>Edit</string>
+   </property>
+  </action>
+  <action name="actionSwitchTestMode">
+   <property name="text">
+    <string>Switch Test Mode</string>
    </property>
   </action>
  </widget>

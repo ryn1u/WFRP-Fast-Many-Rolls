@@ -33,19 +33,76 @@ class FastManyRolls:
     @staticmethod
     def calculate_opposing_throw(
             attacker: Character, attacking_ability: str, defender: Character, defending_ability: str,
-            block_opposing: bool = False
-    ) -> Tuple[int, int, int]:
+    ) -> Tuple[int, int, int, int]:
+
         attacking_roll = random.randint(1, 100)
         attacking_skill = attacker[attacking_ability]
-        attacker_ps = FastManyRolls.get_tens(attacking_skill - attacking_roll)
-        if block_opposing:
-            return attacking_roll, attacker_ps, 0
+        attacker_ps = FastManyRolls.get_tens(attacking_skill) - FastManyRolls.get_tens(attacking_roll)
 
         defending_roll = random.randint(1, 100)
         defending_skill = defender[defending_ability]
-        defender_ps = FastManyRolls.get_tens(defending_skill - defending_roll)
+        defender_ps = FastManyRolls.get_tens(defending_skill) - FastManyRolls.get_tens(defending_roll)
 
-        return attacking_roll, attacker_ps - defender_ps, defending_roll
+        return attacking_roll, attacker_ps, defender_ps, defending_roll
+
+    @staticmethod
+    def calculate_combat_results(
+            attacker: Character,
+            defender: Character,
+            roll_results: Tuple[int, int, int, int],
+            attacker_skill: int,
+            block_opposing: bool = False
+    ):
+        attacking_roll, attacker_ps, defender_ps, defending_roll = roll_results
+
+        attacker_ps = FastManyRolls.check_auto_win_loose(attacking_roll, attacker_ps)
+        defender_ps = FastManyRolls.check_auto_win_loose(defending_roll, defender_ps)
+        result_ps = attacker_ps - defender_ps if not block_opposing else attacker_ps
+        crit_or_oops = FastManyRolls.check_crit_oops(attacking_roll, attacker_skill)
+        hit_location = FastManyRolls.get_hit_location(attacking_roll)
+
+        # todo apply dmg
+        # todo add advantage
+
+        return {
+            "attacker_ps": attacker_ps,
+            "attacker_roll": attacking_roll,
+            "defender_ps": defender_ps,
+            "defender_roll": defending_roll,
+            "result_ps": result_ps,
+            "crit_or_oops": crit_or_oops,
+            "hit_location": hit_location
+        }
+
+    @staticmethod
+    def check_auto_win_loose(roll, ps):
+        if roll <= 5:
+            ps = 1 if ps < 1 else ps
+        elif roll >= 95:
+            ps = -1 if ps > -1 else ps
+        return ps
+
+    @staticmethod
+    def check_crit_oops(roll, skill):
+        if roll % 11 == 0:
+            if roll <= skill:
+                return 1  # crit
+            else:
+                return -1  # oops
+        else:
+            return 0  # nothing
+
+    @staticmethod
+    def get_hit_location(roll):
+        loc = roll % 10 * 10 + roll // 10
+        if 1 <= loc <= 9:
+            return 'Head'
+        elif 10 <= loc <= 44:
+            return 'Arm'
+        elif 45 <= loc <= 79:
+            return 'Body'
+        elif 80 <= loc <= 100:
+            return "Leg"
 
     @staticmethod
     def calculate_test(character: Character, ability: str, difficulty: int) -> Tuple[int, int, int]:
@@ -55,7 +112,7 @@ class FastManyRolls:
         ps = FastManyRolls.get_tens(result) - FastManyRolls.get_tens(roll)
         return roll, ps, result
 
-    def resolve_attack(self, is_ranged: bool):
+    def resolve_attack(self, is_ranged: bool, combat: bool):
         pairs = self.create_pairs()
         for pair in pairs:
             atk_roll, ps, def_roll = FastManyRolls.calculate_opposing_throw(
@@ -72,6 +129,8 @@ class FastManyRolls:
             print(f"{str(attacker)}:\t{roll}\t\t{ps}\t\t{test_result}")
             results.append((roll, ps, result))
         return results
+
+
 
     def create_pairs(self) -> List[Tuple[Character, Character]]:
         # give each attacker a random opponent. Remove that oponent from avaible list. If you run out of defenders refill

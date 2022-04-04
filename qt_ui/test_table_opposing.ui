@@ -417,6 +417,13 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
+       <widget class="QCheckBox" name="is_ranged_checkbox">
+        <property name="text">
+         <string>Is Ranged</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -449,13 +456,6 @@
         </property>
         <property name="maximum">
          <number>100</number>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="is_ranged_checkbox">
-        <property name="text">
-         <string>Is Ranged</string>
         </property>
        </widget>
       </item>
@@ -527,6 +527,13 @@
         </property>
        </spacer>
       </item>
+      <item>
+       <widget class="QCheckBox" name="is_combat_checkbox">
+        <property name="text">
+         <string>Combat</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -544,7 +551,6 @@
     <property name="title">
      <string>List</string>
     </property>
-    <addaction name="actionListNew"/>
     <addaction name="actionListSave"/>
     <addaction name="actionListLoad"/>
    </widget>
@@ -555,8 +561,15 @@
     <addaction name="actionCaracterNew"/>
     <addaction name="actionCharacterEdit"/>
    </widget>
+   <widget class="QMenu" name="menuTest">
+    <property name="title">
+     <string>Test</string>
+    </property>
+    <addaction name="actionSwitchTestMode"/>
+   </widget>
    <addaction name="menuList"/>
    <addaction name="menuCharacter"/>
+   <addaction name="menuTest"/>
   </widget>
   <action name="actionListNew">
    <property name="text">
@@ -581,6 +594,11 @@
   <action name="actionCharacterEdit">
    <property name="text">
     <string>Edit</string>
+   </property>
+  </action>
+  <action name="actionSwitchTestMode">
+   <property name="text">
+    <string>Switch Test Mode</string>
    </property>
   </action>
  </widget>
