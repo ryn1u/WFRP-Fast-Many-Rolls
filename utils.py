@@ -61,3 +61,14 @@ ADVANCED_SKILLS = [
     'Track',
     'Trade'
 ]
+
+MISCELLANEOUS = [
+    "Advantage",
+    "Wounds",
+    "Weapon Damage",
+    "Head Armor",
+    "Arm Armor",
+    "Leg Armor",
+    "Body Armor",
+]
+

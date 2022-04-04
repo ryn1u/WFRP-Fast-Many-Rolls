@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>724</width>
-    <height>631</height>
+    <width>928</width>
+    <height>716</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -445,7 +445,7 @@
                 <widget class="QSpinBox" name="basic_skill_value_1">
                  <property name="font">
                   <font>
-                   <pointsize>8</pointsize>
+                   <pointsize>11</pointsize>
                   </font>
                  </property>
                 </widget>
@@ -597,7 +597,7 @@
                 <widget class="QSpinBox" name="basic_skill_value_6">
                  <property name="font">
                   <font>
-                   <pointsize>8</pointsize>
+                   <pointsize>11</pointsize>
                   </font>
                  </property>
                 </widget>
@@ -749,7 +749,7 @@
                 <widget class="QSpinBox" name="basic_skill_value_11">
                  <property name="font">
                   <font>
-                   <pointsize>8</pointsize>
+                   <pointsize>11</pointsize>
                   </font>
                  </property>
                 </widget>
@@ -901,7 +901,7 @@
                 <widget class="QSpinBox" name="basic_skill_value_16">
                  <property name="font">
                   <font>
-                   <pointsize>8</pointsize>
+                   <pointsize>11</pointsize>
                   </font>
                  </property>
                 </widget>
@@ -1053,7 +1053,7 @@
                 <widget class="QSpinBox" name="basic_skill_value_21">
                  <property name="font">
                   <font>
-                   <pointsize>8</pointsize>
+                   <pointsize>11</pointsize>
                   </font>
                  </property>
                 </widget>
@@ -1203,8 +1203,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>695</width>
-           <height>142</height>
+           <width>895</width>
+           <height>131</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_30">
@@ -1270,8 +1270,16 @@
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QLabel" name="misc_label_1">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>TextLabel</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignJustify|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -1286,13 +1294,141 @@
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
           <widget class="QLabel" name="misc_label_2">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>TextLabel</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignJustify|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QSpinBox" name="misc_value_2"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_37" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_22">
+         <item>
+          <widget class="QLabel" name="misc_label_3">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="misc_value_3"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_38" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_23">
+         <item>
+          <widget class="QLabel" name="misc_label_4">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="misc_value_4"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_39" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_24">
+         <item>
+          <widget class="QLabel" name="misc_label_5">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="misc_value_5"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_40" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_25">
+         <item>
+          <widget class="QLabel" name="misc_label_6">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="misc_value_6"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_41" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_26">
+         <item>
+          <widget class="QLabel" name="misc_label_7">
+           <property name="font">
+            <font>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="misc_value_7"/>
          </item>
         </layout>
        </widget>

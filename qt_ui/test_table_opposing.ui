@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>992</width>
+    <width>974</width>
     <height>688</height>
    </rect>
   </property>
@@ -233,7 +233,7 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>429</width>
+              <width>420</width>
               <height>492</height>
              </rect>
             </property>
@@ -343,7 +343,7 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>429</width>
+              <width>420</width>
               <height>492</height>
              </rect>
             </property>
@@ -430,9 +430,32 @@
        </spacer>
       </item>
       <item>
-       <widget class="QCheckBox" name="only_positive_check">
+       <widget class="QLabel" name="label">
         <property name="text">
-         <string>Only Positive</string>
+         <string>Difficulty</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="difficulty_spin_box_left">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>-100</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="is_ranged_checkbox">
+        <property name="text">
+         <string>Is Ranged</string>
         </property>
        </widget>
       </item>
@@ -450,14 +473,33 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QPushButton" name="flip_sides_btn">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Flip</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_6">
         <property name="text">
          <string>Difficulty</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QSpinBox" name="difficulty_spin_box">
+       <widget class="QSpinBox" name="difficulty_spin_box_right">
         <property name="minimumSize">
          <size>
           <width>50</width>
@@ -485,20 +527,6 @@
         </property>
        </spacer>
       </item>
-      <item>
-       <widget class="QLabel" name="result_label">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
    </layout>
@@ -508,7 +536,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>992</width>
+     <width>974</width>
      <height>22</height>
     </rect>
    </property>

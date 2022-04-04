@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(237, 176)
+        MainWindow.resize(116, 115)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -26,13 +26,6 @@ class Ui_MainWindow(object):
         self.advnaced_skill_box = QtWidgets.QComboBox(self.centralwidget)
         self.advnaced_skill_box.setObjectName("advnaced_skill_box")
         self.verticalLayout.addWidget(self.advnaced_skill_box)
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout.addWidget(self.label_2)
-        self.specialization_value = QtWidgets.QLineEdit(self.centralwidget)
-        self.specialization_value.setObjectName("specialization_value")
-        self.verticalLayout.addWidget(self.specialization_value)
         self.widget = QtWidgets.QWidget(self.centralwidget)
         self.widget.setObjectName("widget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
@@ -50,5 +43,4 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "Advanced Skill"))
-        self.label_2.setText(_translate("MainWindow", "Specialization"))
         self.add_button.setText(_translate("MainWindow", "Add"))

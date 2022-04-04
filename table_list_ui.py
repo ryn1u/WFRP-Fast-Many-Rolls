@@ -7,16 +7,31 @@ from character import Character
 
 
 class TableListUI:
-    def __init__(self, test_list_frame: TestTable, test_skill_combo: qtw.QComboBox):
+    def __init__(self, scroll_area: qtw.QWidget, test_skill_combo: qtw.QComboBox, add_to_list_btn: qtw.QPushButton, difficulty_spinbox: qtw.QSpinBox):
         self.tested_skill = None
         self.test_skill_combo: qtw.QComboBox = test_skill_combo
-        self.layout: qtw.QWidget = test_list_frame.scrollAreaWidgetContents.layout()
+        self.difficulty_spinbox: qtw.QSpinBox = difficulty_spinbox
+        self.layout: qtw.QWidget = scroll_area.layout()
         self.character_entries: List[TableEntryUI] = list()
 
         self._load_skill_lists()
 
         self.character_select = None
-        test_list_frame.add_to_list_button.clicked.connect(self.open_select_character_dialog)
+        self.difficulty = 0
+
+        difficulty_spinbox.valueChanged.connect(self.set_difficulty)
+        test_skill_combo.currentTextChanged.connect(self.set_tested_skill)
+        add_to_list_btn.clicked.connect(self.open_select_character_dialog)
+
+    def set_difficulty(self):
+        self.difficulty = self.difficulty_spinbox.value()
+
+    def delete_selected(self):
+        for i in range(len(self.character_entries) - 1, -1, -1):
+            character = self.character_entries[i]
+            if character.selected:
+                self.character_entries.remove(character)
+                character.remove()
 
     def insert_widget_at_top(self, widget):
         layout_len = len(self.layout)

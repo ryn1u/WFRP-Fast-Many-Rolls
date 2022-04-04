@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_advanced_skill_entry(object):
     def setupUi(self, advanced_skill_entry):
         advanced_skill_entry.setObjectName("advanced_skill_entry")
-        advanced_skill_entry.resize(94, 93)
+        advanced_skill_entry.resize(94, 64)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -62,18 +62,6 @@ class Ui_advanced_skill_entry(object):
         self.advanced_skill_value.setMaximum(500)
         self.advanced_skill_value.setObjectName("advanced_skill_value")
         self.verticalLayout_2.addWidget(self.advanced_skill_value)
-        self.specialization_label = QtWidgets.QLabel(self.frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.specialization_label.sizePolicy().hasHeightForWidth())
-        self.specialization_label.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setItalic(True)
-        self.specialization_label.setFont(font)
-        self.specialization_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.specialization_label.setObjectName("specialization_label")
-        self.verticalLayout_2.addWidget(self.specialization_label)
         self.verticalLayout.addWidget(self.frame)
 
         self.retranslateUi(advanced_skill_entry)
@@ -83,4 +71,3 @@ class Ui_advanced_skill_entry(object):
         _translate = QtCore.QCoreApplication.translate
         advanced_skill_entry.setWindowTitle(_translate("advanced_skill_entry", "Form"))
         self.advanced_skill_label.setText(_translate("advanced_skill_entry", "TextLabel"))
-        self.specialization_label.setText(_translate("advanced_skill_entry", "TextLabel"))

@@ -5,7 +5,7 @@ from typing import *
 
 class Character:
     def __init__(self) -> None:
-        from utils import BASIC_SKILLS, ATTRIBUTES
+        from utils import BASIC_SKILLS, ATTRIBUTES, MISCELLANEOUS
 
         self.name = ""
 
@@ -17,11 +17,7 @@ class Character:
 
         }
 
-        self.advantage: int = 0
-        self.wounds: int = 0
-        self.modifiers: Dict[str, int] = {
-
-        }
+        self.miscellaneous = {misc: 0 for misc in MISCELLANEOUS}
 
     def __str__(self):
         return self.name
@@ -34,16 +30,16 @@ class Character:
             raise KeyError(f"Not available skill: {item}")
 
     def __setitem__(self, key, value):
-        if key in self.attributes:
+        if key == "name":
+            self.name = value
+        elif key in self.attributes:
             self.attributes[key] = value
         elif key in self.basic_skills:
             self.basic_skills[key] = value
         elif key in self.advanced_skills:
             self.advanced_skills[key] = value
-        elif key == 'Advantage':
-            self.advantage = value
-        elif key == 'Wounds':
-            self.wounds = value
+        elif key in self.miscellaneous:
+            self.miscellaneous[key] = value
 
     @staticmethod
     def from_dict(data):
@@ -57,9 +53,26 @@ class Character:
 
         for adv in data['advanced_skills']:
             character[adv] = data['advanced_skills'][adv]
-
-        character.advantage = data['miscellaneous']['Advantage']
-        character.wounds = data['miscellaneous']['Wounds']
+        for misc in data['miscellaneous']:
+            character[misc] = data['miscellaneous'][misc]
         return character
 
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "attributes": self.attributes,
+            "basic_skills": self.basic_skills,
+            "advanced_skills": self.advanced_skills,
+            "miscellaneous": self.miscellaneous
+        }
 
+    def __iter__(self):
+        yield "name", self.name
+        for attr in self.attributes:
+            yield tuple(attr)
+        for basic in self.basic_skills:
+            yield tuple(basic)
+        for adv in self.advanced_skills:
+            yield tuple(adv)
+        for misc in self.miscellaneous:
+            yield  tuple(misc)

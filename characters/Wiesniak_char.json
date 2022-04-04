@@ -42,6 +42,11 @@
     "advanced_skills": {},
     "miscellaneous": {
         "Advantage": 0,
-        "Wounds": 0
+        "Wounds": 0,
+        "Weapon Damage": 0,
+        "Head Armor": 0,
+        "Arm Armor": 0,
+        "Leg Armor": 0,
+        "Body Armor": 0
     }
 }
