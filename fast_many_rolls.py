@@ -61,8 +61,20 @@ class FastManyRolls:
         crit_or_oops = FastManyRolls.check_crit_oops(attacking_roll, attacker_skill)
         hit_location = FastManyRolls.get_hit_location(attacking_roll)
 
-        # todo apply dmg
-        # todo add advantage
+        if result_ps >= 0:
+            # attacker success
+            dmg = attacker["Weapon Damage"] - defender.get_damage_reduction(hit_location) + result_ps
+            dmg = dmg if dmg >= 1 else 1
+            attacker["Advantage"] += 1
+            defender["Advantage"] = 0
+            defender["Wounds"] += dmg
+            if defender["Wounds"] >= defender.get_health():
+                pass
+                # todo check death
+        else:
+            pass
+            # defender success
+
 
         return {
             "attacker_ps": attacker_ps,

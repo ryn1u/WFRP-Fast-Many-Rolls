@@ -100,7 +100,7 @@ class MainWindowMenu:
         # todo add dialog prompt to save list
         if isinstance(roll_list, list):
             if self.main_window.is_opposing:
-                self.main_window.switch_mode()
+                self.main_window = self.main_window.switch_mode()
             self.load_group_test_list(roll_list)
         elif isinstance(roll_list, dict):
             if not self.main_window.is_opposing:
@@ -115,9 +115,6 @@ class MainWindowMenu:
                 self.main_window.roll_lists[0].add_character_entry(char_dict)
 
     def load_opposing_test_list(self, roll_list):
-        if isinstance(roll_list, list):
-            self.load_group_test_list(roll_list)
-            return
         for idx, (side, character_list) in enumerate(roll_list.items()):
             for character_name in character_list:
                 character_file_path = "characters/" + character_name + "_char.json"

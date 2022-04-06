@@ -23,7 +23,7 @@ class Character:
         return self.name
 
     def __getitem__(self, item):
-        all_skills = {**self.attributes, **self.basic_skills, **self.advanced_skills}
+        all_skills = {**self.attributes, **self.basic_skills, **self.advanced_skills, **self.miscellaneous}
         if item in all_skills:
             return all_skills[item]
         else:
@@ -75,4 +75,23 @@ class Character:
         for adv in self.advanced_skills:
             yield tuple(adv)
         for misc in self.miscellaneous:
-            yield  tuple(misc)
+            yield tuple(misc)
+
+    def save(self):
+        data = self.to_dict()
+        with open(f'characters/{self.name}_char.json', 'w') as file:
+            json.dump(data, file, indent=4)
+
+    def get_damage_reduction(self, location):
+        wt_bonus = self["Toughness"] // 10
+        armor = self[f"{location} Armor"]
+        return wt_bonus + armor
+
+    def get_health(self):
+        return self["Strength"] // 10 + 2 * (self["Toughness"] // 10) + self["Willpower"] // 10
+
+    def is_down(self):
+        if self["Wounds"] >= self.get_health():
+            return True
+        else:
+            return False

@@ -40,7 +40,7 @@ class MainWindowUI(qtw.QMainWindow):
             self.ui.add_to_list_button,
             self.ui.difficulty_spin_box
         )
-        self.roll_lists.append(test_roll_list)
+        self.roll_lists = [test_roll_list]
         self.menu_ui = MainWindowMenu(self)
         self._connect_buttons()
 
@@ -71,6 +71,7 @@ class MainWindowUI(qtw.QMainWindow):
         else:
             self.is_opposing = True
             self._init_for_opposing_test()
+        return self
 
     def _connect_buttons(self):
         if not self.is_opposing:
